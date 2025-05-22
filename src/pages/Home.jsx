@@ -93,14 +93,14 @@ const Home = () => {
       <Indexbar />
       <div className="flex-1 flex flex-col items-center">
         <div className="flex flex-1 w-full overflow-y-auto p-4">
-          <div className="w-full lg:w-3/5 space-y-4 mx-auto">
+          <div className="w-full lg:w-3/7 space-y-4 mx-auto ml-[50px]">
             {/* Stories */}
     
 
     <div className="flex flex-row space-x-4 overflow-x-auto pb-2">
       {/* Add Story Box */}
       <div
-        className="bg-gray-300 w-20 h-24 flex items-center justify-center rounded cursor-pointer shrink-0"
+        className="bg-gray-300 w-30 h-44 flex items-center justify-center rounded cursor-pointer shrink-0"
         onClick={handleDivClick}
       >
         +
@@ -110,13 +110,13 @@ const Home = () => {
       {stories.map((story, idx) => (
         <div
           key={idx}
-          className="relative bg-gray-200 w-20 h-24 flex items-center justify-center rounded cursor-pointer overflow-hidden shrink-0"
+          className="relative bg-gray-200 w-30 h-44 flex items-center justify-center rounded cursor-pointer overflow-hidden shrink-0"
         >
           <img src={story} alt={`story-${idx}`} className="w-full h-full object-cover" />
 
           {/* Delete Button */}
           <button
-            className="absolute top-1 right-1 bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600"
+            className="absolute top-0.5 right-1 bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600"
             onClick={(e) => {
               e.stopPropagation();
               handleDeleteStory(idx);
@@ -214,15 +214,15 @@ const Home = () => {
                     ))}
                   </div>
                 ) : (
-                  "+2 images"
+                  "upload here"
                 )}
               </div>
 
              
-<div className="p-4  rounded bg-white shadow-md max-w-md mx-auto mt-6 mr-[300px]">
+<div className="p-4  rounded bg-white shadow-md max-w-md mx-auto mt-6 mr-[300px] w-full">
 
       {/* Action Buttons */}
-      <div className="mt-2 flex space-x-4 text-sm cursor-pointer">
+      <div className="mt-2 flex space-x-4 text-sm cursor-pointer ">
         <span onClick={handleLike}>👍 {likes} Likes</span>
         <span>💬 {comments.length} Comments</span>
         <span onClick={toggleShareOptions}>🔗 Share</span>
@@ -279,53 +279,63 @@ const Home = () => {
           </div>
 
           {/* Right Sidebar */}
-          <div className="w-1/4 space-y-4 ml-4 hidden lg:block">
-            {/* People You May Know */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-bold mb-2">People you may know</h3>
-              {[...Array(5)].map((_, idx) => (
-                <div key={idx} className="flex justify-between items-center mb-2">
-                  <div className="flex items-center space-x-2">
-                    <div className="bg-gray-200 w-8 h-8 rounded-full" />
-                    <span className="text-sm">Mohannad Zitoun</span>
-                  </div>
-                  <button className="bg-blue-700 text-white text-xs px-2 py-1 rounded">
-                    Follow
-                  </button>
-                </div>
-              ))}
-            </div>
+ 
 
-            {/* Invite Friends */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-bold mb-2">Invite Your Friends</h3>
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full border px-2 py-1 rounded"
-              />
-              <button className="mt-2 bg-blue-600 text-white px-4 py-1 rounded">
-                Send
-              </button>
-            </div>
-
-            {/* Footer */}
-            <div className="bg-white text-center text-sm text-gray-500 py-2 w-full">
-              © 2025 Lzycrazy · Languages · About · Blog · Contact Us · More
-            </div>
-
-            {/* Chat Section */}
-            <div className="bg-white p-4 rounded shadow">
-              <h3 className="font-bold mb-2">Chat</h3>
-              {[...Array(5)].map((_, idx) => (
-                <div key={idx} className="flex items-center space-x-2 mb-2">
-                  <div className="bg-gray-200 w-8 h-8 rounded-full" />
-                  <span className="text-sm">Hurin Seary</span>
-                  <span className="ml-auto text-xs text-blue-500">2</span>
-                </div>
-              ))}
-            </div>
+<div className="flex w-full space-x-4 px-4 relative">
+  {/* Left Section (People you may know + Invite + Footer) */}
+  <div className="w-3/5 space-y-4 hidden lg:block ">
+    {/* People You May Know */}
+    <div className="bg-white p-4 rounded shadow  relative left-17">
+      <h3 className="font-bold mb-2">People you may know</h3>
+      {[...Array(5)].map((_, idx) => (
+        <div key={idx} className="flex justify-between items-center mb-2">
+          <div className="flex items-center space-x-2">
+            <div className="bg-gray-200 w-8 h-8 rounded-full" />
+            <span className="text-sm">Mohannad Zitoun</span>
           </div>
+          <button className="bg-blue-700 text-white text-xs px-2 py-1 rounded">
+            Follow
+          </button>
+        </div>
+      ))}
+    </div>
+
+    {/* Invite Friends */}
+    <div className="bg-white p-4 rounded shadow  relative left-17 ">
+      <h3 className="font-bold mb-2">Invite Your Friends</h3>
+      <input
+        type="email"
+        placeholder="Email Address"
+        className="w-full border px-2 py-1 rounded"
+      />
+      <button className="mt-2 bg-blue-600 text-white px-4 py-1 rounded">
+        Send
+      </button>
+    </div>
+
+    {/* Footer */}
+    <div className="bg-white text-center text-sm text-gray-500 py-2 w-3/3.5 relative left-17 ">
+      © 2025 Lzycrazy · Languages · About · Blog · Contact Us · More
+    </div>
+  </div>
+
+  {/* Right Section (Chat) */}
+  <div className="w-2/4 space-y-4 hidden lg:block ml-[70px] relative left-5 ">
+    <div className="bg-white p-4 rounded shadow">
+      <h3 className="font-bold mb-2">Chat</h3>
+      {[...Array(20)].map((_, idx) => (
+        <div key={idx} className="flex items-center space-x-2 mb-2 gap-6">
+          <div className="bg-gray-200 w-8 h-8 rounded-full" />
+          <span className="text-sm">Hurin Seary</span>
+          <span className="ml-auto text-xs text-blue-500">2</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+
         </div>
       </div>
     </div>
